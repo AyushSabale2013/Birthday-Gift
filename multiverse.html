@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Our Multiverse 🌌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Bangers&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/multiverse.css">
+</head>
+
+<body>
+
+    <canvas id="mv-stars"></canvas>
+    <canvas id="mv-web"></canvas>
+    <div class="mv-aurora"></div>
+    <div id="mv-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a class="back-btn" href="index.html" onclick="fadeOut(event, 'index.html')">
+        <span class="back-arrow">←</span>
+        <span>Back</span>
+    </a>
+
+    <!-- PAGE HEADER -->
+    <header class="mv-header">
+        <div class="mv-eyebrow">✦ ACROSS EVERY TIMELINE ✦</div>
+        <h1 class="mv-title">Our Multiverse</h1>
+        <p class="mv-subtitle">Every timeline changes. One thing never does…. it's you.</p>
+    </header>
+
+    <!-- HORIZONTAL TIMELINE -->
+    <div class="timeline-wrapper">
+        <div class="timeline-track-line"></div>
+        <div class="timeline-scroll" id="timeline-scroll">
+
+            <!-- UNIVERSE 01 -->
+            <div class="universe-node" style="--c:#e50914" onclick="enterUniverse(1)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap">
+                        <img src="assets/images/04mutiverseLogos.jpg" alt="Universe 01">
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">01</span>
+                    <span class="chapter-title">Origin Story</span>
+                </div>
+            </div>
+
+            <!-- UNIVERSE 02 -->
+            <div class="universe-node" style="--c:#ff3c4e" onclick="enterUniverse(2)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap">
+                        <img src="assets/images/04mutiverseLogos.jpg" alt="Universe 02">
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">02</span>
+                    <span class="chapter-title">The First Spark</span>
+                </div>
+            </div>
+
+            <!-- UNIVERSE 03 -->
+            <div class="universe-node" style="--c:#c7002a" onclick="enterUniverse(3)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap">
+                        <img src="assets/images/04mutiverseLogos.jpg" alt="Universe 03">
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">03</span>
+                    <span class="chapter-title">Threads of the Multiverse</span>
+                </div>
+            </div>
+
+            <!-- UNIVERSE 04 -->
+            <div class="universe-node" style="--c:#e50914" onclick="enterUniverse(4)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap">
+                        <img src="assets/images/04mutiverseLogos.jpg" alt="Universe 04">
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">04</span>
+                    <span class="chapter-title">A Shift in the Timeline</span>
+                </div>
+            </div>
+
+            <!-- UNIVERSE 05 -->
+            <div class="universe-node" style="--c:#ff1f2e" onclick="enterUniverse(5)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap">
+                        <img src="assets/images/04mutiverseLogos.jpg" alt="Universe 05">
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">05</span>
+                    <span class="chapter-title">The Moment That Changed Everything</span>
+                </div>
+            </div>
+            <!-- UNIVERSE 06 -->
+            <div class="universe-node" style="--c:#ff1f2e" onclick="enterUniverse(6)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap">
+                        <img src="assets/images/04mutiverseLogos.jpg" alt="Universe 05">
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">06</span>
+                    <span class="chapter-title">Across Our Worlds</span>
+                </div>
+            </div>
+
+            <!-- UNIVERSE 07 — GOLD / FUTURE -->
+            <div class="universe-node universe-node--future" style="--c:#f5c518" onclick="enterUniverse(7)">
+                <div class="un-connector"></div>
+                <div class="un-portal">
+                    <div class="un-ring un-ring-1"></div>
+                    <div class="un-ring un-ring-2"></div>
+                    <div class="un-img-wrap un-img-future">
+                        <div class="un-future-content"></div>
+                        <div class="un-img-overlay"></div>
+                    </div>
+                </div>
+                <div class="un-chapter">
+                    <span class="chapter-number">07</span>
+                    <span class="chapter-title">An Infinite Story</span>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="scroll-arrow scroll-left" onclick="scrollTimeline(-1)">‹</button>
+        <button class="scroll-arrow scroll-right" onclick="scrollTimeline(1)">›</button>
+    </div>
+
+    <!-- NEXT BUTTON -->
+    <div class="mv-next-wrap">
+        <button class="mv-next-btn" onclick="goNext()">
+            <span>Continue the Story</span>
+            <span class="mv-next-arrow">›</span>
+        </button>
+    </div>
+
+    <!-- Multiverse background music -->
+    <audio id="bg-music" loop>
+        <source src="assets/audio/multiverseSong.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/musicformultiverse.js"></script>
+    <script src="js/multiverse.js"></script>
+</body>
+
+</html>
