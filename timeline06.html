@@ -1,121 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Universe 01 🌌</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Raleway:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            height: 100%;
-            background: #04060d;
-            color: #fff;
-            font-family: 'Raleway', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            cursor: default;
-        }
-
-        .back-btn {
-            position: fixed;
-            top: 22px;
-            left: 24px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(229, 9, 20, 0.12);
-            border: 1px solid rgba(229, 9, 20, 0.35);
-            border-radius: 50px;
-            padding: 9px 20px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background .25s, color .25s, transform .25s;
-            z-index: 100;
-        }
-
-        .back-btn:hover {
-            background: rgba(229, 9, 20, 0.25);
-            color: #fff;
-            transform: translateX(-3px);
-        }
-
-        .center {
-            text-align: center;
-            z-index: 10;
-        }
-
-        .universe-num {
-            font-family: 'Bangers', cursive;
-            font-size: 1rem;
-            letter-spacing: 0.25em;
-            color: rgba(229, 9, 20, 0.6);
-            margin-bottom: 12px;
-        }
-
-        h1 {
-            font-family: 'Bangers', cursive;
-            font-size: clamp(3rem, 10vw, 6rem);
-            letter-spacing: 0.08em;
-            background: linear-gradient(135deg, #fff 30%, #e50914 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-        }
-
-        p {
-            color: rgba(255, 255, 255, 0.35);
-            font-size: 0.9rem;
-            letter-spacing: 0.12em;
-        }
-
-        .spider {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 16px;
-            animation: bob 2s ease-in-out infinite;
-        }
-
-        @keyframes bob {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The First Spark — Volleyball</title>
+    <link rel="stylesheet" href="css/timeline06.css">
+    <link rel="stylesheet" href="css/cursor.css">
 </head>
-
 <body>
-    <a class="back-btn" href="multiverse.html">← Back</a>
-    <div class="center">
-        <span class="spider">🕷️</span>
-        <div class="universe-num">UNIVERSE 01</div>
-        <h1>Coming Soon</h1>
-        <p>This universe is still being built…</p>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
     </div>
+
+    <a class="back-btn" href="multiverse.html">← Multiverse</a>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-chapter">CHAPTER V</div>
+            <h1>The Turning Point</h1>
+            <p class="hero-sub">A single decision can redirect an entire life</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <section class="timeline">
+        <div class="timeline-item left reveal">
+            <div class="timeline-text">
+                <span class="tn">01 🏐</span>
+                <p>It started casually… just another game on the court.</p>
+            </div>
+            <div class="timeline-img">
+                <div class="photo-frame">
+                    <img src="assets/images/03multiverseBackground.jpeg" alt="Moment 01">
+                    <div class="spider-accent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item right reveal">
+            <div class="timeline-text">
+                <span class="tn">02 😏</span>
+                <p>A few jokes, a little teasing… nothing serious. Or maybe it was.</p>
+            </div>
+            <div class="timeline-img">
+                <div class="photo-frame">
+                    <img src="assets/images/03multiverseBackground.jpeg" alt="Moment 02">
+                    <div class="spider-accent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item left reveal">
+            <div class="timeline-text">
+                <span class="tn">03 ⚡</span>
+                <p>Somewhere between rallies and laughs… something shifted.</p>
+            </div>
+            <div class="timeline-img">
+                <div class="photo-frame">
+                    <img src="assets/images/03multiverseBackground.jpeg" alt="Moment 03">
+                    <div class="spider-accent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item right reveal">
+            <div class="timeline-text">
+                <span class="tn">04 👀</span>
+                <p>I started noticing you more… not just as part of the game.</p>
+            </div>
+            <div class="timeline-img">
+                <div class="photo-frame">
+                    <img src="assets/images/03multiverseBackground.jpeg" alt="Moment 04">
+                    <div class="spider-accent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item left reveal">
+            <div class="timeline-text">
+                <span class="tn">05 🔥</span>
+                <p>The energy wasn’t loud… but it was real.</p>
+            </div>
+            <div class="timeline-img">
+                <div class="photo-frame">
+                    <img src="assets/images/03multiverseBackground.jpeg" alt="Moment 05">
+                    <div class="spider-accent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item right reveal">
+            <div class="timeline-text">
+                <span class="tn">06 ✨</span>
+                <p>That’s when I knew… something had started here.</p>
+            </div>
+            <div class="timeline-img">
+                <div class="photo-frame">
+                    <img src="assets/images/03multiverseBackground.jpeg" alt="Moment 06">
+                    <div class="spider-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <audio id="bg-music" loop>
         <source src="assets/audio/multiverseSong.mp3" type="audio/mpeg">
     </audio>
@@ -124,5 +112,4 @@
     <script src="js/cursor.js"></script>
     <script src="js/musicformultiverse.js"></script>
 </body>
-
 </html>

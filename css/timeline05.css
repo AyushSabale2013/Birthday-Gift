@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Raleway:wght@300;400;600&display=swap');
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: #0b0e14; /* Deep, dark navy base */
+    color: #f8fafc;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ================= BACKGROUND (DUAL TONE) ================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    /* Diagonal gradient: Blue top-left fading into Orange bottom-right */
+    background:
+        linear-gradient(135deg, rgba(14, 30, 64, 0.6) 0%, rgba(64, 25, 14, 0.6) 100%), 
+        url("../assets/images/10timeline05bg.png") center/cover no-repeat;
+    filter: brightness(1.1) contrast(1.1); 
+    z-index: -2;
+}
+
+/* Subtle Dust Overlay */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ================= PROGRESS BAR ================= */
+.progress-container {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.progress-bar {
+    height: 100%;
+    /* 50/50 Blue to Orange */
+    background: linear-gradient(90deg, #3b82f6, #f97316);
+    width: 0%;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+}
+
+/* ================= HERO ================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    /* Left side blue, right side orange text */
+    background: linear-gradient(to right, #60a5fa 30%, #fb923c 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: titleFloat 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes titleFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(-12px); }
+}
+
+/* ================= BACK BUTTON ================= */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    padding: 10px 18px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    transition: 0.4s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fb923c;
+    transform: translateY(-2px);
+    /* Dual shadow hover */
+    box-shadow: -5px 5px 15px rgba(59, 130, 246, 0.4), 5px -5px 15px rgba(249, 115, 22, 0.4);
+}
+
+/* ================= TIMELINE ================= */
+.timeline {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+    padding: 100px 0;
+}
+
+.timeline::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    /* Spine starts blue at the top and turns orange at the bottom */
+    background: linear-gradient(to bottom, transparent, #3b82f6 30%, #f97316 70%, transparent);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ================= ITEM ================= */
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 140px 0;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.timeline-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item.right {
+    flex-direction: row-reverse;
+}
+
+/* ================= TEXT CARD ================= */
+.timeline-text {
+    width: 44%;
+    padding: 35px;
+    background: rgba(15, 18, 25, 0.85); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+}
+
+.timeline-text:hover {
+    border-color: #ffffff;
+    transform: translateY(-5px);
+    /* DUAL COLOR GLOW ON HOVER */
+    box-shadow: -15px 15px 40px rgba(59, 130, 246, 0.2), 15px -15px 40px rgba(249, 115, 22, 0.2);
+}
+
+.timeline-text p {
+    font-size: 1.25rem;
+    color: #ffffff; 
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.tn {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    /* Gradient text for the numbers */
+    background: linear-gradient(to right, #60a5fa, #fb923c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+/* ================= IMAGE & PHOTO FRAME ================= */
+.timeline-img {
+    width: 44%;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Outward Tilts */
+.timeline-item.left .timeline-img { transform: rotate(-8deg); }
+.timeline-item.right .timeline-img { transform: rotate(8deg); }
+
+.timeline-item:hover .timeline-img {
+    transform: rotate(0deg) scale(1.08) !important;
+}
+
+.photo-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    transition: 0.5s ease;
+}
+
+.timeline-item:hover .photo-frame {
+    /* Subtle mixed border and mixed shadow on image hover */
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: -20px 20px 50px rgba(59, 130, 246, 0.3), 20px -20px 50px rgba(249, 115, 22, 0.3);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1); 
+    transition: 0.8s ease;
+}
+
+.timeline-item:hover .photo-frame img {
+    filter: brightness(1.1);
+    transform: scale(1.1);
+}
+
+/* Dual-Glow Sparkle Accent */
+.spider-accent {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    /* Mixes blue light on the left and orange light on the right */
+    box-shadow: -8px 0 15px #3b82f6, 8px 0 15px #f97316, 0 0 20px #ffffff;
+    opacity: 0.9;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width: 768px) {
+    .timeline::after { left: 20px; }
+    .timeline-item, .timeline-item.right {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+    .timeline-text, .timeline-img {
+        width: 100%;
+        margin-left: 40px;
+    }
+    .timeline-img { transform: rotate(0) !important; margin-top: 20px; }
+}

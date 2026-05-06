@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Raleway:wght@300;400;600&display=swap');
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: #0a0205; /* Pitch black with a hint of warm void */
+    color: #fdf2f8; 
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ================= CRAZY BACKGROUNDS ================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(15, 2, 8, 0.7), rgba(20, 5, 10, 0.7)), 
+        url("../assets/images/12timeline07bg.jpg") center/cover no-repeat;
+    filter: brightness(1.2) contrast(1.2) saturate(1.2); 
+    z-index: -3;
+}
+
+/* Layer 1: Pulsing Dust */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(236, 72, 153, 0.25) 1px, transparent 0);
+    background-size: 60px 60px;
+    z-index: -2;
+    pointer-events: none;
+    animation: infiniteBreathe 6s ease-in-out infinite;
+}
+
+/* Layer 2: Infinite Rising Parallax Stardust */
+.progress-container::before {
+    content: "";
+    position: fixed;
+    inset: -100% 0 0 0; /* Extra tall for scrolling */
+    background-image: radial-gradient(circle at 2px 2px, rgba(249, 115, 22, 0.3) 1px, transparent 0);
+    background-size: 100px 100px;
+    z-index: -1;
+    pointer-events: none;
+    animation: stardustRise 20s linear infinite;
+}
+
+@keyframes infiniteBreathe {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes stardustRise {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100px); }
+}
+
+/* ================= PROGRESS BAR ================= */
+.progress-container {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ec4899, #f97316, #eab308, #ec4899);
+    background-size: 300% 100%;
+    width: 0%;
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.8), 0 0 10px #f97316;
+    animation: infiniteGradientFlow 2s linear infinite;
+}
+
+@keyframes infiniteGradientFlow {
+    0% { background-position: 0% 0; }
+    100% { background-position: 100% 0; }
+}
+
+/* ================= HERO & CRAZY INFINITY ================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "∞";
+    position: absolute;
+    font-size: 55vw;
+    font-family: 'Raleway', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(249, 115, 22, 0.05);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    /* Spinning and breathing simultaneously */
+    animation: rotateInfinity 40s linear infinite, infinityGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes rotateInfinity {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes infinityGlow {
+    0% { filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0)); }
+    100% { filter: drop-shadow(0 0 50px rgba(236, 72, 153, 0.5)); -webkit-text-stroke: 3px rgba(236, 72, 153, 0.2); }
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    background: linear-gradient(to right, #ec4899, #f97316, #ec4899);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 40px rgba(236, 72, 153, 0.5);
+    animation: textShineFlow 3s linear infinite, titleFloat 3.5s ease-in-out infinite alternate;
+    cursor: crosshair;
+}
+
+/* Chromatic Glitch on Hover */
+.hero h1:hover {
+    animation: heroGlitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes textShineFlow {
+    to { background-position: 200% center; }
+}
+
+@keyframes titleFloat {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-15px) scale(1.02); }
+}
+
+@keyframes heroGlitch {
+    0% { transform: translate(0); text-shadow: 4px 0 #ec4899, -4px 0 #0ff; }
+    20% { transform: translate(-3px, 3px); text-shadow: -4px 0 #ec4899, 4px 0 #0ff; }
+    40% { transform: translate(-3px, -3px); text-shadow: 4px 0 #ec4899, -4px 0 #0ff; }
+    60% { transform: translate(3px, 3px); text-shadow: -4px 0 #ec4899, 4px 0 #0ff; }
+    80% { transform: translate(3px, -3px); text-shadow: 4px 0 #ec4899, -4px 0 #0ff; }
+    100% { transform: translate(0); text-shadow: -4px 0 #ec4899, 4px 0 #0ff; }
+}
+
+/* ================= BACK BUTTON ================= */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: rgba(236, 72, 153, 0.1); 
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(249, 115, 22, 0.5);
+    border-radius: 30px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.back-btn:hover {
+    background: linear-gradient(45deg, #ec4899, #f97316);
+    border-color: #ffffff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.6);
+}
+
+/* ================= TIMELINE WITH ENERGY COMET ================= */
+.timeline {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+    padding: 100px 0;
+}
+
+/* The Base Spine */
+.timeline::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background: rgba(236, 72, 153, 0.2);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* The Shooting Energy Comet */
+.timeline::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, #ec4899, #ffffff, #f97316, transparent);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #ec4899, 0 0 40px #f97316;
+    animation: cometDrop 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes cometDrop {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* ================= ITEM ================= */
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 140px 0;
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.timeline-item.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.timeline-item.right {
+    flex-direction: row-reverse;
+}
+
+/* ================= TEXT CARD (FROSTED GLASS) ================= */
+.timeline-text {
+    width: 44%;
+    padding: 35px;
+    background: rgba(25, 10, 18, 0.85); /* Deep burgundy glass */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(236, 72, 153, 0.3); 
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-text:hover {
+    border-color: #f97316; /* Flips to Orange on Hover */
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.3);
+}
+
+.timeline-text p {
+    font-size: 1.25rem;
+    color: #fdf2f8; 
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.tn {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    background: linear-gradient(to right, #ec4899, #f97316, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: 800;
+    animation: textShineFlow 3s linear infinite;
+}
+
+/* ================= CRAZY IMAGE FRAME ================= */
+.timeline-img {
+    width: 44%;
+    position: relative;
+    transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    perspective: 1000px; /* Prepares for 3D pop */
+}
+
+/* Outward Tilts */
+.timeline-item.left .timeline-img { transform: rotate(-6deg) translateZ(0); }
+.timeline-item.right .timeline-img { transform: rotate(6deg) translateZ(0); }
+
+.photo-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    /* Breathing Neon Border */
+    border: 3px solid #ec4899; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(236, 72, 153, 0.3);
+    animation: borderBreathe 4s alternate infinite;
+    transition: 0.6s ease;
+}
+
+@keyframes borderBreathe {
+    0% { border-color: #ec4899; box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 15px #ec4899; }
+    100% { border-color: #f97316; box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 30px #f97316; }
+}
+
+.timeline-item:hover .timeline-img {
+    /* Extreme 3D Pop on hover */
+    transform: rotate(0deg) scale(1.15) translateZ(50px) !important;
+    z-index: 10;
+}
+
+.timeline-item:hover .photo-frame {
+    animation: none; /* Stops breathing, goes full power */
+    border-color: #ffffff;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 50px #ec4899, 0 0 80px #f97316;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.1) saturate(1.1); 
+    transition: 0.8s ease;
+}
+
+.timeline-item:hover .photo-frame img {
+    filter: brightness(1.2) contrast(1.2) saturate(1.3);
+    transform: scale(1.15);
+}
+
+/* Hyper-Pulse Accent Dot */
+.spider-accent {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff; 
+    animation: hyperPulse 0.8s infinite alternate;
+}
+
+@keyframes hyperPulse {
+    0% { transform: scale(0.8); box-shadow: 0 0 5px #ec4899, 0 0 15px #ec4899; }
+    100% { transform: scale(1.5); box-shadow: 0 0 20px #ffffff, 0 0 40px #f97316, 0 0 60px #ec4899; }
+}
+
+/* ================= MOBILE ================= */
+@media(max-width: 768px) {
+    .timeline::after { left: 20px; }
+    .timeline::before { left: 20px; } /* Adjust comet for mobile */
+    .timeline-item, .timeline-item.right {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+    .timeline-text, .timeline-img {
+        width: 100%;
+        margin-left: 40px;
+    }
+    .timeline-img { transform: rotate(0) !important; margin-top: 30px; }
+}

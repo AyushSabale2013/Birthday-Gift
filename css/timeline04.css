@@ -9,23 +9,34 @@
 
 body {
     font-family: 'Raleway', sans-serif;
-    background: #06080f;
-    color: #a6c8ff;
+    background: #090a14; /* Very deep cool night-sky blue/purple */
+    color: #f8fafc; /* Crisp white text */
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* ================= BACKGROUND ================= */
-/* ================= BACKGROUND ================= */
+/* ================= BACKGROUND (BRIGHT PURPLE-BLUE) ================= */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    /* Soft periwinkle/lavender tint */
     background:
-        linear-gradient(rgba(10, 15, 30, 0.25), rgba(10, 15, 30, 0.25)),
+        linear-gradient(rgba(18, 15, 38, 0.4), rgba(15, 20, 45, 0.4)), 
         url("../assets/images/09timeline04bg.jpg") center/cover no-repeat;
-    filter: brightness(0.9) contrast(1.1);
+    filter: brightness(1.1) contrast(1.05) saturate(1.1); 
     z-index: -2;
+}
+
+/* Subtle Lavender Dust Overlay */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(167, 139, 250, 0.15) 1px, transparent 0);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* ================= PROGRESS BAR ================= */
@@ -34,15 +45,16 @@ body::before {
     top: 0;
     z-index: 1000;
     width: 100%;
-    height: 3px;
+    height: 4px;
     background: rgba(255, 255, 255, 0.05);
 }
 
 .progress-bar {
-    height: 3px;
-    background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+    height: 100%;
+    /* Light Purple to Light Blue Gradient */
+    background: linear-gradient(90deg, #c4b5fd, #93c5fd, #ffffff);
     width: 0%;
-    box-shadow: 0 0 10px #3b82f6;
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.6);
 }
 
 /* ================= HERO ================= */
@@ -52,7 +64,6 @@ body::before {
     justify-content: center;
     align-items: center;
     text-align: center;
-    perspective: 1000px;
 }
 
 .hero h1 {
@@ -60,23 +71,17 @@ body::before {
     font-size: clamp(3rem, 10vw, 6rem);
     text-transform: uppercase;
     letter-spacing: 12px;
-    background: linear-gradient(to bottom, #ffffff 30%, #1e3a8a);
+    /* Ethereal Purple-Blue Gradient */
+    background: linear-gradient(to bottom, #ffffff 40%, #a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 20px 0;
-    animation: titleFloat 3s ease-in-out infinite alternate;
+    text-shadow: 0 10px 40px rgba(129, 140, 248, 0.4);
+    animation: titleFloat 3.5s ease-in-out infinite alternate;
 }
 
 @keyframes titleFloat {
-    from {
-        transform: translateZ(0px);
-        text-shadow: 0 0 0 transparent;
-    }
-
-    to {
-        transform: translateZ(50px);
-        text-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-    }
+    from { transform: translateY(0); }
+    to { transform: translateY(-12px); }
 }
 
 /* ================= BACK BUTTON ================= */
@@ -85,33 +90,25 @@ body::before {
     top: 20px;
     left: 20px;
     z-index: 1001;
-
     padding: 10px 18px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
     text-decoration: none;
-    color: #a6c8ff;
-
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(166, 200, 255, 0.2);
-    border-radius: 30px;
-
-    transition: all 0.3s ease;
-}
-
-/* Hover effect */
-.back-btn:hover {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: #3b82f6;
+    text-transform: uppercase;
     color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+    background: rgba(167, 139, 250, 0.15); 
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(196, 181, 253, 0.4);
+    border-radius: 30px;
+    transition: 0.4s ease;
 }
 
-/* Click feel */
-.back-btn:active {
-    transform: scale(0.95);
+.back-btn:hover {
+    background: rgba(129, 140, 248, 0.3);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
+    color: #ffffff;
 }
 
 /* ================= TIMELINE ================= */
@@ -127,12 +124,12 @@ body::before {
     content: "";
     position: absolute;
     width: 2px;
-    background: linear-gradient(to bottom, transparent, #1e3a8a, #3b82f6, #1e3a8a, transparent);
+    background: linear-gradient(to bottom, transparent, #a78bfa, #ffffff, #93c5fd, transparent);
     top: 0;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.4);
 }
 
 /* ================= ITEM ================= */
@@ -140,15 +137,15 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 120px 0;
+    margin: 140px 0;
     opacity: 0;
-    transform: translateY(80px) rotateX(-10deg);
+    transform: translateY(60px);
     transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .timeline-item.active {
     opacity: 1;
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0);
 }
 
 .timeline-item.right {
@@ -157,76 +154,99 @@ body::before {
 
 /* ================= TEXT CARD ================= */
 .timeline-text {
-    width: 45%;
-    padding: 40px;
-    background: rgba(15, 25, 45, 0.5);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-    transition: 0.5s;
-    z-index: 5;
+    width: 44%;
+    padding: 35px;
+    /* Frosted glass with a deep indigo/purple tint */
+    background: rgba(18, 15, 38, 0.85); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(167, 139, 250, 0.3); 
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    transition: 0.5s ease;
 }
 
 .timeline-text:hover {
-    background: rgba(25, 45, 85, 0.7);
-    border-color: #3b82f6;
-    transform: translateY(-10px) scale(1.02);
+    border-color: #c4b5fd; /* Soft purple glow border */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
 }
 
 .timeline-text p {
-    font-size: 1.2rem;
-    color: #a6c8ff;
+    font-size: 1.25rem;
+    color: #ffffff; 
     font-style: italic;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .tn {
     font-size: 0.8rem;
     letter-spacing: 4px;
-    color: #3b82f6;
+    color: #a78bfa; /* Lavender Purple */
     display: block;
     margin-bottom: 15px;
+    font-weight: 700;
 }
 
-/* ================= IMAGE ================= */
+/* ================= IMAGE & PHOTO FRAME ================= */
 .timeline-img {
-    width: 45%;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+    width: 44%;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.timeline-img img {
+/* Outward Tilts */
+.timeline-item.left .timeline-img { transform: rotate(-8deg); }
+.timeline-item.right .timeline-img { transform: rotate(8deg); }
+
+.timeline-item:hover .timeline-img {
+    transform: rotate(0deg) scale(1.08) !important;
+}
+
+.photo-frame {
     width: 100%;
-    display: block;
-    transition: 1s ease;
-    filter: grayscale(40%) contrast(1.1) brightness(0.9);
+    aspect-ratio: 1 / 1; 
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(167, 139, 250, 0.4); /* Lavender border */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
-.timeline-item:hover .timeline-img img {
-    filter: grayscale(0%);
-    transform: scale(1.1) rotate(2deg);
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1); 
+    transition: 0.8s ease;
+}
+
+.timeline-item:hover .photo-frame img {
+    filter: brightness(1.1);
+    transform: scale(1.1);
+}
+
+/* Purple-Blue Sparkle Accent */
+.spider-accent {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 15px #ffffff, 0 0 30px #a78bfa;
+    opacity: 0.9;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width: 768px) {
-    .timeline::after {
-        left: 20px;
-    }
-
-    .timeline-item,
-    .timeline-item.right {
+    .timeline::after { left: 20px; }
+    .timeline-item, .timeline-item.right {
         flex-direction: column !important;
         align-items: flex-start;
     }
-
-    .timeline-text,
-    .timeline-img {
+    .timeline-text, .timeline-img {
         width: 100%;
         margin-left: 40px;
     }
-
-    .timeline-text {
-        margin-bottom: 20px;
-    }
+    .timeline-img { transform: rotate(0) !important; margin-top: 20px; }
 }

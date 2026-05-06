@@ -1,10 +1,10 @@
-1. Origin Story
-2. The First Spark
-3. Threads of the Multiverse
-4. A Shift in the Timeline
-5. The Moment That Changed Everything
-6. Across Our Worlds
-7. An Infinite Story
+1. Origin Story - FIRST SIGHT first thoughts (mostly aarambh)
+2. The First Spark (volleyball)
+3. Threads of the Multiverse (eklavya)
+4. A Shift in the Timeline (movie)
+5. The Moment That Changed Everything (icon day1)
+6. Across Our Worlds (icon day2)
+7. An Infinite Story (now)
 
 
 Good—now you’re actually building something coherent.

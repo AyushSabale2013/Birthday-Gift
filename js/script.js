@@ -206,8 +206,8 @@ document.addEventListener('click', e => {
 ═══════════════════════════════════════════════════ */
 document.addEventListener('click', e => {
     if (!e.target.closest('.btn') && !e.target.closest('.portal-container')) return;
-    const glyphs = ['✨', '💥', '⭐', '🌟', '💖', '🔥', '🕷️'];
-    for (let i = 0; i < 7; i++) {
+    const glyphs = ['❤️', '🌸', '✨', '💕' ,'🌷', '🕷️'];
+    for (let i = 0; i < 6; i++) {
         const sp = document.createElement('div');
         sp.className = 'sparkle';
         sp.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
@@ -241,7 +241,7 @@ function checkPass() {
         void wrap.offsetWidth;
         wrap.classList.add('shake');
         document.getElementById('wrong-msg').textContent =
-            'Try again… (maybe it is the nickname that ur mamma gave .... 🙈)';
+            'Try again… (maybe it is the nickname that ur mamma gave u .... 🙈)';
         setTimeout(() => {
             document.getElementById('wrong-msg').textContent = '';
         }, 3200);
