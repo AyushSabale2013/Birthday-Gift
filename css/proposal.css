@@ -1,0 +1,910 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Background Image with a slight dark overlay so the text pops */
+    background:
+        linear-gradient(rgba(10, 15, 30, 0.6), rgba(0, 0, 0, 0.8)),
+        url("../assets/images/proposal.jpg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/* MULTIVERSE LIGHTING */
+
+body::before {
+    content: "";
+
+    position: absolute;
+    inset: -20%;
+
+    background:
+
+        radial-gradient(circle at 20% 20%,
+            rgba(255, 215, 0, 0.18),
+            transparent 28%),
+
+        radial-gradient(circle at 80% 30%,
+            rgba(0, 140, 255, 0.14),
+            transparent 35%),
+
+        radial-gradient(circle at 50% 80%,
+            rgba(255, 50, 50, 0.12),
+            transparent 40%);
+
+    filter: blur(110px);
+
+    animation:
+        multiverseMove 18s ease-in-out infinite alternate;
+
+    z-index: 0;
+}
+
+@keyframes multiverseMove {
+
+    from {
+        transform:
+            translate(0, 0) scale(1);
+    }
+
+    to {
+        transform:
+            translate(-4%, 5%) scale(1.15);
+    }
+}
+
+.proposal-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 2;
+}
+
+/* MILES MORALES SPIDER-VERSE BOX */
+.proposal-box {
+
+    position: relative;
+    overflow: hidden;
+
+    width: min(92vw, 850px);
+    min-height: 60vh;
+
+    padding: 60px 40px;
+
+    border-radius: 28px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.03));
+
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.12) 1.6px,
+            transparent 1.6px);
+
+    background-size: 16px 16px;
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+
+        0 25px 90px rgba(0, 0, 0, 0.55),
+
+        0 0 50px rgba(255, 215, 0, 0.08),
+
+        inset 0 1px 1px rgba(255, 255, 255, 0.06);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    transform:
+        rotate(-1deg);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.proposal-box::after {
+
+    content: "";
+
+    position: absolute;
+    inset: 8px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.05);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.proposal-box:hover {
+
+    transform:
+        rotate(0deg) translateY(-5px) scale(1.01);
+
+    box-shadow:
+
+        0 35px 120px rgba(0, 0, 0, 0.65),
+
+        0 0 70px rgba(255, 215, 0, 0.16);
+}
+
+/* GLITCH TEXT MECHANICS */
+.question {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+
+    /* Aggressive Glitch Animation */
+    animation: trueGlitch 2s infinite;
+}
+
+/* Chromatic Aberration Layers */
+.question::before,
+.question::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Red Shift */
+.question::before {
+    left: 4px;
+    text-shadow: -3px 0 #E23636;
+    animation: glitchTop 1.5s infinite linear alternate-reverse;
+    z-index: -1;
+}
+
+/* Blue Shift */
+.question::after {
+    left: -4px;
+    text-shadow: 3px 0 #0476F2;
+    animation: glitchBottom 2.1s infinite linear alternate-reverse;
+    z-index: -2;
+}
+
+
+
+@keyframes trueGlitch {
+
+    0%,
+    20%,
+    60%,
+    62%,
+    100% {
+        transform: skew(0deg);
+    }
+
+    21% {
+        transform: skew(-10deg);
+        color: #FFD700;
+    }
+
+    22% {
+        transform: skew(0deg);
+        color: #ffffff;
+    }
+
+    61% {
+        transform: skew(10deg);
+    }
+}
+
+@keyframes glitchTop {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+        transform: translate(0);
+    }
+
+    20% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 90%, 0 90%);
+        transform: translate(-3px);
+    }
+
+    40% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 15%, 0 15%);
+        transform: translate(3px);
+    }
+
+    100% {
+        clip-path: polygon(0 20%, 100% 20%, 100% 80%, 0 80%);
+        transform: translate(0);
+    }
+}
+
+@keyframes glitchBottom {
+    0% {
+        clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
+        transform: translate(0);
+    }
+
+    30% {
+        clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+        transform: translate(3px);
+    }
+
+    50% {
+        clip-path: polygon(0 40%, 100% 40%, 100% 45%, 0 45%);
+        transform: translate(-3px);
+    }
+
+    100% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+        transform: translate(0);
+    }
+}
+
+/* Shake Animation (Triggered by JS) */
+.shake {
+    animation: shakeAnim 0.3s ease;
+}
+
+@keyframes shakeAnim {
+
+    0%,
+    100% {
+        transform: translateX(0) rotate(-1.5deg);
+    }
+
+    25% {
+        transform: translateX(-10px) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateX(10px) rotate(1deg);
+    }
+
+    75% {
+        transform: translateX(-10px) rotate(-2deg);
+    }
+}
+
+/* COMIC BUTTONS */
+/* ═══════════════════════════════════════════════════
+   BUTTON GROUP
+═══════════════════════════════════════════════════ */
+
+.btn-group {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 32px;
+
+    position: relative;
+}
+
+/* ═══════════════════════════════════════════════════
+   COMMON BUTTON
+═══════════════════════════════════════════════════ */
+
+button {
+
+    position: relative;
+    overflow: hidden;
+
+    border: none;
+    outline: none;
+
+    padding: 20px 52px;
+
+    border-radius: 18px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    text-transform: uppercase;
+
+    transition:
+
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+
+    backdrop-filter: blur(10px);
+
+    isolation: isolate;
+}
+
+/* Shine Sweep */
+
+button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -120%;
+    left: -40%;
+
+    width: 60%;
+    height: 320%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.35),
+            transparent);
+
+    transform: rotate(25deg);
+
+    animation:
+        buttonShine 4s linear infinite;
+}
+
+@keyframes buttonShine {
+
+    to {
+        transform:
+            translateX(260%) rotate(25deg);
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+   YES BUTTON
+═══════════════════════════════════════════════════ */
+
+.yes-btn {
+
+    background:
+        linear-gradient(135deg,
+            #FFD700,
+            #FFB300);
+
+    color: #111;
+
+    box-shadow:
+
+        0 15px 35px rgba(255, 215, 0, 0.35),
+
+        0 0 30px rgba(255, 215, 0, 0.25);
+
+    animation:
+        pulseLove 2.2s infinite;
+}
+
+.yes-btn::after {
+
+    content: "";
+
+    position: absolute;
+    inset: -2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.5),
+            transparent);
+
+    opacity: 0.4;
+
+    z-index: -1;
+}
+
+.yes-btn:hover {
+
+    transform:
+        translateY(-8px) scale(1.08);
+
+    box-shadow:
+
+        0 25px 60px rgba(255, 215, 0, 0.5),
+
+        0 0 50px rgba(255, 215, 0, 0.35);
+}
+
+.yes-btn:active {
+
+    transform:
+        scale(0.95);
+}
+
+/* Pulse */
+
+@keyframes pulseLove {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+   NO BUTTON
+═══════════════════════════════════════════════════ */
+
+.no-btn {
+
+    background:
+        linear-gradient(135deg,
+            rgba(120, 0, 0, 0.88),
+            rgba(229, 9, 20, 0.92));
+
+    border:
+        1px solid rgba(255, 120, 120, 0.22);
+
+    color: white;
+
+    box-shadow:
+
+        0 12px 32px rgba(229, 9, 20, 0.35),
+
+        0 0 20px rgba(229, 9, 20, 0.18);
+
+    backdrop-filter: blur(12px);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* Red Glow Layer */
+
+.no-btn::after {
+
+    content: "";
+
+    position: absolute;
+    inset: -2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 80, 80, 0.35),
+            transparent);
+
+    opacity: 0.4;
+
+    z-index: -1;
+}
+
+/* Hover */
+
+.no-btn:hover {
+
+    background:
+        linear-gradient(135deg,
+            rgba(150, 0, 0, 0.95),
+            rgba(255, 40, 40, 1));
+
+    transform:
+        translateY(-5px) scale(1.04);
+
+    box-shadow:
+
+        0 18px 45px rgba(229, 9, 20, 0.45),
+
+        0 0 35px rgba(255, 0, 0, 0.28);
+}
+
+/* Active */
+
+.no-btn:active {
+
+    transform:
+        scale(0.95);
+}
+
+/* COMIC ACTION POPS (THWIP!) */
+.comic-pop {
+    position: fixed;
+    z-index: 10000;
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    color: #FFD700;
+    text-shadow: 3px 3px 0px #E23636, 6px 6px 0px #000000;
+    -webkit-text-stroke: 2px #000;
+    pointer-events: none;
+    animation: burstIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.6) forwards;
+}
+
+@keyframes burstIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.1) rotate(-30deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(15deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(1) rotate(0deg);
+    }
+}
+
+/* FINAL MESSAGE */
+.final-message {
+    animation: swingIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.final-message p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #ffffff;
+    margin-top: 25px;
+    font-weight: 800;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes swingIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) rotate(-10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@media(max-width:768px) {
+    .proposal-box {
+        padding: 40px 20px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .question {
+        font-size: 2.2rem;
+    }
+}
+
+
+.particles {
+
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.particles span {
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 215, 0, 0.6);
+
+    box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.8);
+
+    animation:
+        floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+
+    from {
+        transform:
+            translateY(110vh) scale(0.5);
+    }
+
+    to {
+        transform:
+            translateY(-10vh) scale(1.2);
+    }
+}
+
+/* SPIDER SENSE FLASH */
+
+.spider-sense::before {
+
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle,
+            rgba(255, 0, 0, 0.12),
+            transparent 60%);
+
+    animation:
+        spiderFlash 0.25s ease;
+
+    pointer-events: none;
+
+    z-index: 999;
+}
+
+@keyframes spiderFlash {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════
+   FINAL SCENE
+═══════════════════════════════════════════════════ */
+
+.final-scene {
+
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation:
+        finalReveal 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* LOVE RING */
+
+.love-ring {
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(from 0deg,
+
+            rgba(255, 215, 0, 0.35),
+            transparent,
+            rgba(255, 0, 80, 0.3),
+            transparent,
+            rgba(0, 200, 255, 0.3),
+            transparent);
+
+    filter: blur(25px);
+
+    animation:
+        loveRotate 10s linear infinite;
+
+    opacity: 0.7;
+}
+
+/* FINAL TITLE */
+
+.final-title {
+
+    position: relative;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+
+    color: white;
+
+    z-index: 2;
+
+    animation:
+        titlePop 1s cubic-bezier(0.175, 0.885, 0.32, 1.5);
+}
+
+/* GLOW */
+
+.final-title::before {
+
+    content: attr(data-text);
+
+    position: absolute;
+    inset: 0;
+
+    color: #FFD700;
+
+    filter: blur(18px);
+
+    opacity: 0.7;
+
+    z-index: -1;
+}
+
+/* FINAL CARD */
+
+.final-card {
+
+    position: relative;
+    z-index: 2;
+
+    max-width: 700px;
+
+    padding: 34px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.04));
+
+    border:
+        1px solid rgba(255, 215, 0, 0.18);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+
+        0 20px 70px rgba(0, 0, 0, 0.45),
+
+        0 0 40px rgba(255, 215, 0, 0.12);
+}
+
+/* TEXT */
+
+.final-text {
+
+    font-size: 1.2rem;
+
+    line-height: 2;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-weight: 700;
+}
+
+/* GOLD TEXT */
+
+.gold-text {
+
+    color: #FFD700;
+
+    text-shadow:
+        0 0 14px rgba(255, 215, 0, 0.45);
+}
+
+/* HIGHLIGHT */
+
+.highlight-line {
+
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 16px rgba(0, 217, 255, 0.35);
+}
+
+/* STARS */
+
+.final-stars {
+
+    margin-top: 24px;
+
+    font-size: 1.6rem;
+
+    letter-spacing: 12px;
+
+    animation:
+        starsFloat 2s ease-in-out infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes finalReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+@keyframes titlePop {
+
+    0% {
+        opacity: 0;
+        transform:
+            scale(0.5) rotate(-10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            scale(1) rotate(0deg);
+    }
+}
+
+@keyframes loveRotate {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes starsFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}

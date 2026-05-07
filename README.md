@@ -171,3 +171,48 @@ You’re building:
 
 If you want next:
 I can write **actual lines/dialogues for each of your real moments** so it hits properly instead of sounding generic.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const stages = [
+
+    "Wait... that wasn't part of the canon event.",
+
+    "Miles literally crossed universes for this 😭",
+
+    "Pakka ? I mean itna sab hone ke baad bhi ?",
+
+    "Even Miguel wouldn't approve this timeline.",
+
+    "After everything we've been through... still no? 🕷️",
+
+    "You're really gonna break Spider-Man's heart like this?",
+
+    "One last chance before this universe collapses...",
+
+    "The multiverse officially rejected the NO button."
+];

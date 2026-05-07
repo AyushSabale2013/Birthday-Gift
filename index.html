@@ -1,215 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>For You ❤️</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Verse Proposal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <canvas id="stars-canvas"></canvas>
-    <div class="aurora"></div>
-    <div class="hearts-layer" id="hearts-layer"></div>
-    <div id="transition-overlay"></div>
-
-    <!-- 🔒 LOCK SCREEN -->
-    <section id="lock-screen" class="screen active">
-        <div class="screen-bg"></div>
-        <div class="lock-icon reveal">🔐</div>
-        <h2 class="reveal">Enter something only we know…</h2>
-        <div class="input-wrap reveal">
-            <input type="password" id="password" placeholder="I told u to remember"
-                onkeydown="if(event.key==='Enter') checkPass()" autocomplete="off">
-        </div>
-        <button class="btn reveal" onclick="checkPass()">
-            <span class="btn-text">Unlock Spiderverse</span>
-            <span class="btn-shine"></span>
-        </button>
-        <p class="wrong-msg" id="wrong-msg"></p>
-    </section>
-
-    <!-- ⏳ PRELOAD -->
-    <section id="preload" class="screen">
-        <div class="screen-bg"></div>
-        <div class="spider-loader">
-            <div class="web-spinner"></div>
-            <span class="spider-emoji">🕷️</span>
-        </div>
-        <p
-            style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.15em; margin-top:24px; font-family:'Raleway',sans-serif;">
-            SWINGING THROUGH THE MULTIVERSE…
-        </p>
-    </section>
-
-    <!-- 🌃 LANDING -->
-    <section id="landing" class="screen">
-        <div class="screen-bg"></div>
-        <div class="eyebrow reveal">✦ A BIRTHDAY STORY ✦</div>
-        <h1 class="glitch reveal" data-text="In every universe…">
-            In every universe…<br>I'd still choose you. <span class="heartbeat">♥</span>
-        </h1>
-        <p class="reveal" style="color:rgba(255,255,255,0.5);">
-            Something special is waiting ahead.<br>Just breathe and get ready.
-        </p>
-        <button class="btn reveal" onclick="nextScreen('landing','intro')">
-            <span class="btn-text">Begin ›</span>
-            <span class="btn-shine"></span>
-        </button>
-    </section>
-
-    <!-- 🎂 INTRO -->
-    <section id="intro" class="screen">
-        <div class="screen-bg"></div>
-        <p class="reveal italic-lead">Don't rush this…</p>
-        <h2 class="reveal">Some things are worth<br>slowing down for.</h2>
-        <div class="deco-line reveal"></div>
-        <button class="btn reveal" onclick="nextScreen('intro','birthday')">
-            <span class="btn-text">I'm ready ›</span>
-            <span class="btn-shine"></span>
-        </button>
-    </section>
-
-    <!-- 🎉 BIRTHDAY -->
-    <section id="birthday" class="screen">
-        <div class="screen-bg"></div>
-        <div class="bday-cake reveal">🎂</div>
-        <h1 class="reveal">Happy Birthday<br>my MJ <span class="bday-emoji">🙃</span></h1>
-        <p class="reveal">Today the universe celebrates you.<br>And so do I.</p>
-        <button class="btn reveal" onclick="nextScreen('birthday','multiverse-gate')">
-            <span class="btn-text">Continue ›</span>
-            <span class="btn-shine"></span>
-        </button>
-        <div class="confetti-layer" id="confetti-layer"></div>
-    </section>
-
-    <!-- 🌌 MULTIVERSE GATE -->
-    <section id="multiverse-gate" class="screen">
-        <div class="screen-bg"></div>
-        <canvas id="web-canvas"></canvas>
-        <div class="mv-gate-wrap">
-            <div class="mv-gate-header reveal">
-                <div class="eyebrow">✦ ACROSS EVERY TIMELINE ✦</div>
-                <h2>Our Multiverse</h2>
-                <p class="mv-sub">Different worlds. Same story… us.</p>
-            </div>
-            <div class="portal-container reveal" onclick="openMultiverse()">
-                <div class="portal-ring portal-ring-1"></div>
-                <div class="portal-ring portal-ring-2"></div>
-                <div class="portal-ring portal-ring-3"></div>
-                <div class="portal-image">
-                    <img src="assets/images/05portalLogo.png" alt="Our Universe">
-                    <div class="portal-overlay"></div>
-                </div>
-            </div>
-            <p class="portal-hint reveal">Tap the portal</p>
-        </div>
-    </section>
-
-    <!-- 💫 REASONS -->
-    <section id="reasons" class="screen">
-        <div class="screen-bg"></div>
-        <div class="eyebrow reveal">✦ THE TRUTH ✦</div>
-        <h2 class="reveal">Things I'll never say<br>out loud… until now.</h2>
-        <div class="reasons-grid reveal">
-            <div class="reason-card" style="--i:0">
-                <div class="reason-num">01</div>
-                <div class="reason-icon">🌅</div>
-                <p>You make the most ordinary moments feel like scenes from a movie I never want to end.</p>
-            </div>
-            <div class="reason-card" style="--i:1">
-                <div class="reason-num">02</div>
-                <div class="reason-icon">🫧</div>
-                <p>You understand what I mean before I even finish saying it. That's rare. That's you.</p>
-            </div>
-            <div class="reason-card" style="--i:2">
-                <div class="reason-num">03</div>
-                <div class="reason-icon">🌸</div>
-                <p>Being around you doesn't feel like effort. It feels like breathing. Easy. Natural. Home.</p>
+    <div class="proposal-wrapper">
+        <div class="proposal-box" id="proposalBox">
+            <h1 class="question" id="question" data-text="BE MY MJ?">BE MY MJ?</h1>
+            
+            <div class="btn-group" id="btnGroup">
+                <button class="yes-btn" id="yesBtn">YES!</button>
+                <button class="no-btn" id="noBtn">NO WAY</button>
             </div>
         </div>
-        <button class="btn reveal" onclick="nextScreen('reasons','choice')">
-            <span class="btn-text">Next ›</span>
-            <span class="btn-shine"></span>
-        </button>
-    </section>
+    </div>
 
-    <!-- 🕹️ CHOICE -->
-    <section id="choice" class="screen">
-        <div class="screen-bg"></div>
-        <div class="eyebrow reveal">✦ THE MOMENT OF TRUTH ✦</div>
-        <h2 class="reveal">What should I choose?</h2>
-        <p class="reveal"
-            style="color:rgba(255,255,255,0.35); font-size:0.82rem; letter-spacing:0.15em; margin-bottom:32px;">THINK.
-            CAREFULLY.</p>
-        <div class="choice-btns reveal">
-            <button class="btn btn-ghost" onclick="pickChoice('spider')">
-                <span class="btn-text">Be Spider-Man 🕷️</span>
-                <span class="btn-shine"></span>
-            </button>
-            <div class="choice-vs">or</div>
-            <button class="btn" onclick="pickChoice('you')">
-                <span class="btn-text">Be with you ❤️</span>
-                <span class="btn-shine"></span>
-            </button>
-        </div>
-        <p class="choice-hint" id="choice-hint"></p>
-    </section>
-
-    <!-- 💡 RESULT -->
-    <section id="result" class="screen">
-        <div class="screen-bg"></div>
-        <div class="result-quote reveal">
-            <div class="result-qmark">"</div>
-            <h2 id="result-heading">I'd still choose you.</h2>
-            <div class="result-qmark result-qmark-close">"</div>
-        </div>
-        <div class="result-line"></div>
-        <p class="reveal" id="result-sub">Every. Single. Time.</p>
-        <button class="btn reveal" onclick="nextScreen('result','nomask')">
-            <span class="btn-text">Continue ›</span>
-            <span class="btn-shine"></span>
-        </button>
-    </section>
-
-    <!-- 🎭 NO MASK -->
-    <section id="nomask" class="screen">
-        <div class="screen-bg"></div>
-        <div class="mask-icon reveal">🎭</div>
-        <h2 class="reveal">No jokes…<br>just me.</h2>
-        <p class="reveal" style="color:rgba(255,255,255,0.5);">The real one. The unguarded one.</p>
-        <div class="deco-line reveal"></div>
-        <button class="btn reveal" onclick="nextScreen('nomask','final')">
-            <span class="btn-text">Almost there ›</span>
-            <span class="btn-shine"></span>
-        </button>
-    </section>
-
-    <!-- 🎥 FINAL -->
-    <section id="final" class="screen">
-        <div class="screen-bg"></div>
-        <div class="final-frame reveal">
-            <video controls>
-                <source src="assets/videos/final.mp4" type="video/mp4">
-            </video>
-        </div>
-        <p class="reveal final-msg">
-            I'm really glad I have you <span class="heartbeat">❤️</span>
-        </p>
-    </section>
-
-    <!-- Birthday music -->
-    <audio id="bday-music" loop>
-        <source src="assets/audio/happy.mp3" type="audio/mpeg">
-    </audio>
-    
-    <script src="js/musicforindex.js"></script>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
