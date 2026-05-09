@@ -1,3 +1,17 @@
+// check phoneuser
+
+    function isMobileDevice() {
+        return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    }
+
+    if (isMobileDevice()) {
+        window.location.href = "msgforphoneuser.html";
+    }
+
+
+
+
+
 /* ═══════════════════════════════════════════════════
    DEEP-LINK HASH HANDLER
    index.html#reasons  → skip straight to reasons screen
@@ -55,7 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
         ov.style.opacity = '1';
         setTimeout(() => {
             ov.style.transition = 'opacity 0.6s ease';
-            ov.style.opacity    = '0';
+            ov.style.opacity = '0';
         }, 100);
     }
 });
@@ -65,22 +79,22 @@ window.addEventListener('DOMContentLoaded', () => {
 ═══════════════════════════════════════════════════ */
 (function () {
     const canvas = document.getElementById('stars-canvas');
-    const ctx    = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
 
     function resize() {
-        canvas.width  = window.innerWidth;
+        canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     resize();
     window.addEventListener('resize', resize);
 
     const stars = Array.from({ length: 200 }, () => ({
-        x:            Math.random(),
-        y:            Math.random(),
-        r:            Math.random() * 1.6 + 0.2,
+        x: Math.random(),
+        y: Math.random(),
+        r: Math.random() * 1.6 + 0.2,
         twinkleSpeed: Math.random() * 0.018 + 0.004,
-        phase:        Math.random() * Math.PI * 2,
-        color:        Math.random() > 0.92 ? 'rgba(245,197,24,' : 'rgba(255,255,255,'
+        phase: Math.random() * Math.PI * 2,
+        color: Math.random() > 0.92 ? 'rgba(245,197,24,' : 'rgba(255,255,255,'
     }));
 
     function draw() {
@@ -102,16 +116,16 @@ window.addEventListener('DOMContentLoaded', () => {
    FLOATING HEARTS / PARTICLES
 ═══════════════════════════════════════════════════ */
 (function () {
-    const layer   = document.getElementById('hearts-layer');
-    const symbols = ['❤️', '🌸', '✨', '💕' ,'🌷', '🕷️'];
+    const layer = document.getElementById('hearts-layer');
+    const symbols = ['❤️', '🌸', '✨', '💕', '🌷', '🕷️'];
     for (let i = 0; i < 22; i++) {
         const el = document.createElement('div');
         el.className = 'heart-particle';
         el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        el.style.left              = Math.random() * 100 + 'vw';
+        el.style.left = Math.random() * 100 + 'vw';
         el.style.animationDuration = (10 + Math.random() * 20) + 's';
-        el.style.animationDelay    = (Math.random() * 24) + 's';
-        el.style.fontSize          = (0.7 + Math.random() * 1.1) + 'rem';
+        el.style.animationDelay = (Math.random() * 24) + 's';
+        el.style.fontSize = (0.7 + Math.random() * 1.1) + 'rem';
         layer.appendChild(el);
     }
 })();
@@ -124,17 +138,17 @@ function initWebCanvas() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    canvas.width  = window.innerWidth;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
     const spokes = 12;
-    const rings  = 7;
-    const maxR   = Math.max(canvas.width, canvas.height) * 0.6;
+    const rings = 7;
+    const maxR = Math.max(canvas.width, canvas.height) * 0.6;
 
     ctx.strokeStyle = 'rgba(229,9,20,0.6)';
-    ctx.lineWidth   = 0.5;
+    ctx.lineWidth = 0.5;
 
     for (let i = 0; i < spokes; i++) {
         const angle = (i / spokes) * Math.PI * 2;
@@ -148,7 +162,7 @@ function initWebCanvas() {
         const radius = (r / rings) * maxR;
         ctx.beginPath();
         for (let i = 0; i <= spokes; i++) {
-            const angle  = (i / spokes) * Math.PI * 2;
+            const angle = (i / spokes) * Math.PI * 2;
             const jitter = 1 + (Math.random() - 0.5) * 0.1;
             const x = cx + Math.cos(angle) * radius * jitter;
             const y = cy + Math.sin(angle) * radius * jitter;
@@ -163,21 +177,21 @@ function initWebCanvas() {
    CONFETTI (birthday screen)
 ═══════════════════════════════════════════════════ */
 function spawnConfetti() {
-    const layer  = document.getElementById('confetti-layer');
+    const layer = document.getElementById('confetti-layer');
     if (!layer) return;
     layer.innerHTML = '';
-    const colors = ['#e50914','#f5c518','#fff','#ff6b81','#a8edea','#ff9ff3'];
+    const colors = ['#e50914', '#f5c518', '#fff', '#ff6b81', '#a8edea', '#ff9ff3'];
     for (let i = 0; i < 90; i++) {
         const el = document.createElement('div');
         el.className = 'confetti-piece';
-        el.style.left              = Math.random() * 100 + '%';
-        el.style.top               = '-10px';
-        el.style.background        = colors[Math.floor(Math.random() * colors.length)];
+        el.style.left = Math.random() * 100 + '%';
+        el.style.top = '-10px';
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
         el.style.animationDuration = (2 + Math.random() * 2.5) + 's';
-        el.style.animationDelay    = (Math.random() * 1.8) + 's';
-        el.style.width             = (5 + Math.random() * 8) + 'px';
-        el.style.height            = (5 + Math.random() * 8) + 'px';
-        el.style.borderRadius      = Math.random() > 0.5 ? '50%' : '2px';
+        el.style.animationDelay = (Math.random() * 1.8) + 's';
+        el.style.width = (5 + Math.random() * 8) + 'px';
+        el.style.height = (5 + Math.random() * 8) + 'px';
+        el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
         layer.appendChild(el);
     }
 }
@@ -195,7 +209,7 @@ document.addEventListener('click', e => {
     ripple.style.cssText = `
         width:${size}px; height:${size}px;
         left:${e.clientX - rect.left - size / 2}px;
-        top:${e.clientY  - rect.top  - size / 2}px;
+        top:${e.clientY - rect.top - size / 2}px;
     `;
     btn.appendChild(ripple);
     setTimeout(() => ripple.remove(), 700);
@@ -206,14 +220,14 @@ document.addEventListener('click', e => {
 ═══════════════════════════════════════════════════ */
 document.addEventListener('click', e => {
     if (!e.target.closest('.btn') && !e.target.closest('.portal-container')) return;
-    const glyphs = ['❤️', '🌸', '✨', '💕' ,'🌷', '🕷️'];
+    const glyphs = ['❤️', '🌸', '✨', '💕', '🌷', '🕷️'];
     for (let i = 0; i < 6; i++) {
         const sp = document.createElement('div');
         sp.className = 'sparkle';
         sp.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
         sp.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
         sp.style.left = (e.clientX + (Math.random() - 0.5) * 80) + 'px';
-        sp.style.top  = (e.clientY + (Math.random() - 0.5) * 80) + 'px';
+        sp.style.top = (e.clientY + (Math.random() - 0.5) * 80) + 'px';
         document.body.appendChild(sp);
         setTimeout(() => sp.remove(), 950);
     }
@@ -223,7 +237,7 @@ document.addEventListener('click', e => {
    OPEN MULTIVERSE PAGE
 ═══════════════════════════════════════════════════ */
 function openMultiverse() {
-  window.location.href = "multiverse.html";
+    window.location.href = "multiverse.html";
 }
 
 
@@ -257,12 +271,12 @@ function pickChoice(option) {
         hint.textContent = '…really? 🤨';
         setTimeout(() => nextScreen('choice', 'result'), 1000);
         document.getElementById('result-heading').textContent = "I'd still choose you.";
-        document.getElementById('result-sub').textContent     = 'Every. Single. Time.';
+        document.getElementById('result-sub').textContent = 'Every. Single. Time.';
     } else {
         hint.textContent = '✨ I knew it.';
         setTimeout(() => nextScreen('choice', 'result'), 900);
         document.getElementById('result-heading').textContent = 'Of course I chose you.';
-        document.getElementById('result-sub').textContent     = 'There was never a doubt.';
+        document.getElementById('result-sub').textContent = 'There was never a doubt.';
     }
 }
 
@@ -275,16 +289,16 @@ function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
 
-    if (id === 'birthday')        spawnConfetti();
+    if (id === 'birthday') spawnConfetti();
     if (id === 'multiverse-gate') setTimeout(initWebCanvas, 300);
 }
 
 function nextScreen(current, next) {
     overlay.style.transition = 'opacity 0.32s ease';
-    overlay.style.opacity    = '1';
+    overlay.style.opacity = '1';
     setTimeout(() => {
         showScreen(next);
         overlay.style.transition = 'opacity 0.48s ease';
-        overlay.style.opacity    = '0';
+        overlay.style.opacity = '0';
     }, 330);
 }
