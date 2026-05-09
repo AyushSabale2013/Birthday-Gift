@@ -1,15 +1,17 @@
-// check phoneuser
+//  phone user checker 
+(function () {
 
-    function isMobileDevice() {
-        return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    const isMobile =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+            .test(navigator.userAgent);
+
+    if (isMobile &&
+        !window.location.pathname.includes("msgforphoneuser.html")) {
+
+        window.location.replace("msgforphoneuser.html");
     }
 
-    if (isMobileDevice()) {
-        window.location.href = "msgforphoneuser.html";
-    }
-
-
-
+})();
 
 
 /* ═══════════════════════════════════════════════════
